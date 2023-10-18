@@ -24,7 +24,7 @@ export default function DriverProfileScreen({ navigation }) {
           </TouchableOpacity>
         </View> */}
       </View>
-      <View style={[styles.innercontainer]}>
+      <View style={[styles.innercontainer, {marginLeft: 10}]}>
         <View style={styles.fieldContainer}>
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Insert Information</Text>
