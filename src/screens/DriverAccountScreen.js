@@ -1,8 +1,8 @@
 import React from 'react'
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
-import { TouchableOpacity } from 'react-native';
+
 
 export default function DriverAccountScreen({ navigation }) {
   return (
@@ -25,16 +25,16 @@ export default function DriverAccountScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Profile Photo</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn}>
-            <Icon name="send"  size={40} color={COLORS.primary} />
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('ProfilePhoto')}>
+            <Icon name="cloud-upload"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
         <View style={styles.fieldContainer}>
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Bank Passbook</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn}>
-            <Icon name="send"  size={40} color={COLORS.primary} />
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('BankPassbook')}>
+            <Icon name="cloud-upload"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
       </View>
@@ -55,7 +55,7 @@ export default function DriverAccountScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Vehicle Documents</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn} >
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('VehicleDocument')} >
             <Icon name="send"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
@@ -63,7 +63,7 @@ export default function DriverAccountScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Vehicle Images</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn}>
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('VehicleImage')} >
             <Icon name="send"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
