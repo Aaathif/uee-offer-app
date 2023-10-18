@@ -5,30 +5,42 @@ import COLORS from '../consts/colors'
 export default function DriverInformationScreen({ navigation }) {
 
 
-    const [vehicleMake, setVehicleMake] = useState('');
-    const [vehicleModel, setVehicleModel] = useState('');
-    const [vehicleYear, setVehicleYear] = useState('');
-    const [vehicleRegistrationNumber, setvehicleRegistrationNumber] = useState('');
-    const [vehiclePlateNumber, setVehiclePlateNumber] = useState('');
-    const [vehicleInsurance, setVehicleInsurance] = useState('');
+    const [driverName, setDriverName] = useState('');
+    const [driverEmail, setDriverEmail] = useState('');
+    const [driverFullName, setDriverFullName] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [nationalId, setNationalId] = useState('');
+    const [address, setAddress] = useState('');
+    const [emergencyContact, setEmergencyContact] = useState('');
+    const [gender, setGender] = useState('');
 
-    const handleVehicleMakeChange = (text) => {
-        setVehicleMake(text);
+    const handleDriverNameChange = (text) => {
+        setDriverName(text);
     };
-    const handleVehicleModelChange = (text) => {
-        setVehicleModel(text);
+    const handleDriverEmailChange = (text) => {
+        setDriverEmail(text);
     };
-    const handleVehicleYearChange = (text) => {
-        setVehicleYear(text);
+    const handleDriverFullNameChange = (text) => {
+        setDriverFullName(text);
     };
-    const handleVehicleRegistrationNumberChange = (text) => {
-        setvehicleRegistrationNumber(text);
+    const handleMobileNumberChange = (text) => {
+        setMobileNumber(text);
     };
-    const handleVehiclePlateNumberChange = (text) => {
-        setVehiclePlateNumber(text);
+    const handleDateOfBirthChange = (text) => {
+        setDateOfBirth(text);
     };
-    const handleVehicleInsuranceChange = (text) => {
-        setVehicleInsurance(text);
+    const handleNationalIdChange = (text) => {
+        setNationalId(text);
+    };
+    const handleAddressChange = (text) => {
+        setAddress(text);
+    };
+    const handleEmergencyContactChange = (text) => {
+        setEmergencyContact(text);
+    };
+    const handleGenderChange = (text) => {
+        setGender(text);
     };
 
 
@@ -44,8 +56,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Driver Name"
-                        value={vehicleMake}
-                        onChangeText={handleVehicleMakeChange}
+                        value={driverName}
+                        onChangeText={handleDriverNameChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -53,8 +65,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Driver Email"
-                        value={vehicleModel}
-                        onChangeText={handleVehicleModelChange}
+                        value={driverEmail}
+                        onChangeText={handleDriverEmailChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -62,8 +74,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Driver Full Name"
-                        value={vehicleYear}
-                        onChangeText={handleVehicleYearChange}
+                        value={driverFullName}
+                        onChangeText={handleDriverFullNameChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -71,17 +83,17 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Mobile Number"
-                        value={vehicleRegistrationNumber}
-                        onChangeText={handleVehicleRegistrationNumberChange}
+                        value={mobileNumber}
+                        onChangeText={handleMobileNumberChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
                     <Text style={styles.inputLabel}>Date Of Birth</Text>
                     <TextInput
                         style={styles.inputBox}
-                        placeholder="Enter Plate Number"
-                        value={vehiclePlateNumber}
-                        onChangeText={handleVehiclePlateNumberChange}
+                        placeholder="Enter Date of Birth"
+                        value={dateOfBirth}
+                        onChangeText={handleDateOfBirthChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -89,8 +101,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter National Identity Card No"
-                        value={vehicleInsurance}
-                        onChangeText={handleVehicleInsuranceChange}
+                        value={nationalId}
+                        onChangeText={handleNationalIdChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -98,8 +110,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Address"
-                        value={vehicleInsurance}
-                        onChangeText={handleVehicleInsuranceChange}
+                        value={address}
+                        onChangeText={handleAddressChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -107,8 +119,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Emergency Contact"
-                        value={vehicleInsurance}
-                        onChangeText={handleVehicleInsuranceChange}
+                        value={emergencyContact}
+                        onChangeText={handleEmergencyContactChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
@@ -116,8 +128,8 @@ export default function DriverInformationScreen({ navigation }) {
                     <TextInput
                         style={styles.inputBox}
                         placeholder="Enter Gender"
-                        value={vehicleInsurance}
-                        onChangeText={handleVehicleInsuranceChange}
+                        value={gender}
+                        onChangeText={handleGenderChange}
                     />
                 </View>
                 <View style={styles.fieldContainer}>
