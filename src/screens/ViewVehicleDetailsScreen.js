@@ -2,54 +2,53 @@ import React from 'react'
 import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import COLORS from '../consts/colors';
 
-
-export default function ViewDriverDetailsScreen({ navigation }) {
+export default function ViewVehicleDetailsScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent={false} />
             <ScrollView style={styles.innercontainer}>
                 <View style={styles.titleView}>
-                    <Text style={styles.titleText}>Driver Details</Text>
-                    <Text style={styles.smallText}>For Driver or Vehicle owner details</Text>
+                    <Text style={styles.titleText}>Vehicle Details</Text>
+                    <Text style={styles.smallText}>For primary vehicle information for specific vehicle </Text>
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>User Name</Text>
+                        <Text style={styles.fieldBoxText}>Vehicle Make</Text>
                     </View>
                     <View style={styles.fieldBtn}>
-                        <Text style={styles.fieldBtnText}>Hazil Thahir</Text>
+                        <Text style={styles.fieldBtnText}>2021</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>User Email</Text>
+                        <Text style={styles.fieldBoxText}>Vehicle  Model</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>hazil@gmail.com</Text>
+                        <Text style={styles.fieldBtnText}>Baja</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Full Name</Text>
+                        <Text style={styles.fieldBoxText}>Vehicle Year</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>Mohamed Hazil Mohamed Thahir</Text>
+                        <Text style={styles.fieldBtnText}>2020</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Mobile Number</Text>
+                        <Text style={styles.fieldBoxText}>Registration Number </Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>077-128-1289</Text>
+                        <Text style={styles.fieldBtnText}>89302741285279</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Date of birth</Text>
+                        <Text style={styles.fieldBoxText}>Plate Number</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>1995.01.21</Text>
+                        <Text style={styles.fieldBtnText}>WP VE-8866</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -62,26 +61,10 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                 </View>
                 <View style={styles.fieldContainer}>
                     <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Address</Text>
+                        <Text style={styles.fieldBoxText}>Insurance Number</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>1A Centre Road, Colombo 00200</Text>
-                    </View>
-                </View>
-                <View style={styles.fieldContainer}>
-                    <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Emergency Contact</Text>
-                    </View>
-                    <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>077-128-8769</Text>
-                    </View>
-                </View>
-                <View style={styles.fieldContainer}>
-                    <View style={styles.fieldBox}>
-                        <Text style={styles.fieldBoxText}>Gender</Text>
-                    </View>
-                    <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>Male</Text>
+                        <Text style={styles.fieldBtnText}>54894587816878764166</Text>
                     </View>
                 </View>
                 <View style={styles.fieldBtnContainer}>
@@ -93,7 +76,6 @@ export default function ViewDriverDetailsScreen({ navigation }) {
         </SafeAreaView>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
