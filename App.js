@@ -16,6 +16,8 @@ import RevenueCertificateScreen from './src/screens/RevenueCertificateScreen';
 import VehicleInsuranceScreen from './src/screens/VehicleInsuranceScreen';
 import InspectionReportScreen from './src/screens/InspectionReportScreen';
 import ProofOfOwnership from './src/screens/ProofOfOwnership';
+import DisplayInformation from './src/screens/DisplayInformation';
+import ViewDriverDetailsScreen from './src/screens/ViewDriverDetailsScreen';
 
 
 const Stack = createStackNavigator();
@@ -41,6 +43,9 @@ export default function App() {
             <Stack.Screen name='VehicleInsurance' component={VehicleInsuranceScreen} options={{title: 'Vehicle Insurance'}}/>
             <Stack.Screen name='InspectionReport' component={InspectionReportScreen} options={{title: 'Vehicle Inspection Report'}}/>
             <Stack.Screen name='ProofOfOwnership' component={ProofOfOwnership} options={{title: 'Proof Of Ownership'}}/>
+
+            <Stack.Screen name='displayInformation' component={DisplayInformation} options={{title: 'Information'}}/>
+            <Stack.Screen name='ViewDriverDetails' component={ViewDriverDetailsScreen} options={{title: 'Driver Details'}}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

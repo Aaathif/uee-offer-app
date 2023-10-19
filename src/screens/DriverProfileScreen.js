@@ -29,16 +29,16 @@ export default function DriverProfileScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Insert Information</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn}onPress={() => navigation.navigate('DriverAccount')} >
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('DriverAccount')} >
             <Icon name="send"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
         <View style={styles.fieldContainer}>
           <View style={styles.fieldBox}>
-            <Text style={styles.fieldBoxText}>View Information</Text>
+            <Text style={styles.fieldBoxText}>View Information</Text> 
           </View>
           <TouchableOpacity style={styles.fieldBtn} >
-            <Icon name="send"  size={40} color={COLORS.primary} />
+            <Icon name="send"  size={40} color={COLORS.primary} onPress={() => navigation.navigate('displayInformation')} />
           </TouchableOpacity>
         </View>
         <View style={styles.fieldContainer}>
