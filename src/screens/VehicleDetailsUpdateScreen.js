@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
-import { SafeAreaView, ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { SafeAreaView, ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 import COLORS from '../consts/colors'
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
-export default function VehicleInformationScreen({ navigation }) {
+export default function VehicleDetailsUpdateScreen({ route }) {
 
-    const [vehicleMake, setVehicleMake] = useState('');
-    const [vehicleModel, setVehicleModel] = useState('');
-    const [vehicleYear, setVehicleYear] = useState('');
-    const [vehicleRegistrationNumber, setvehicleRegistrationNumber] = useState('');
-    const [vehiclePlateNumber, setVehiclePlateNumber] = useState('');
-    const [vehicleInsurance, setVehicleInsurance] = useState('');
+    const navigation = useNavigation();
+
+    const vehicle = route.params;
+    const key = vehicle._id;
+
+    const [vehicleMake, setVehicleMake] = useState(vehicle.vehicleMake);
+    const [vehicleModel, setVehicleModel] = useState(vehicle.vehicleModel);
+    const [vehicleYear, setVehicleYear] = useState(vehicle.vehicleYear);
+    const [vehicleRegistrationNumber, setvehicleRegistrationNumber] = useState(vehicle.vehicleRegistrationNumber);
+    const [vehiclePlateNumber, setVehiclePlateNumber] = useState(vehicle.vehiclePlateNumber);
+    const [vehicleInsurance, setVehicleInsurance] = useState(vehicle.vehicleInsurance);
 
     const handleVehicleMakeChange = (text) => {
         setVehicleMake(text);
@@ -31,42 +37,35 @@ export default function VehicleInformationScreen({ navigation }) {
         setVehicleInsurance(text);
     };
 
-    handleAddVehicle = () => {
-        sendData();
+    const updatedVehicle = {
+        vehicleMake,
+        vehicleModel,
+        vehicleYear,
+        vehicleRegistrationNumber,
+        vehiclePlateNumber,
+        vehicleInsurance,
     }
 
-    const sendData = async () => {
-        const newVehicle = {
-            vehicleMake,
-            vehicleModel,
-            vehicleYear,
-            vehicleRegistrationNumber,
-            vehiclePlateNumber,
-            vehicleInsurance
-        }
 
-        await axios.post("http://192.168.8.106:3000/vehicle", newVehicle)
-            .then((response) => {
-                console.log('Server Response Added Vehicles Successfully:', response.data);
-                alert("Vehicle added Successfully");
-                setVehicleMake('');
-                setVehicleModel('');
-                setVehicleYear('');
-                setvehicleRegistrationNumber('');
-                setVehiclePlateNumber('');
-                setVehicleInsurance('');
+    const updateData = async (id) => {
+        await axios.put(`http://192.168.8.106:3000/vehicle/${key}`, updatedVehicle)
+            .then(() => {
+                Alert.alert("Vehicle Details Updated Successfully")
+                navigation.navigate('displayInformation')
+                console.log("Vehicle Details Updated")
             })
-            .catch((error) => {
-                alert("Add vehicle error happened")
-                console.error('Vehicle Error:', error);
-            });
+            .catch((err) => {
+                Alert.alert("Error occurred while updating the details")
+                console.error('Error: rrror occurred while updating the details', err);
+            })
     }
+
 
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.innercontainer}>
                 <View style={styles.titleView}>
-                    <Text style={styles.titleText}>Vehicle Information</Text>
+                    <Text style={styles.titleText}>Update Vehicle Information</Text>
                     <Text style={styles.smallText}>For Bike or Three wheel</Text>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -124,7 +123,7 @@ export default function VehicleInformationScreen({ navigation }) {
                     />
                 </View>
                 <View style={styles.fieldContainer}>
-                    <TouchableOpacity style={styles.submitBtn} onPress={() => { handleAddVehicle() }}>
+                    <TouchableOpacity style={styles.submitBtn} onPress={updateData}>
                         <Text style={styles.submitText}>Submit</Text>
                     </TouchableOpacity>
                 </View>
@@ -132,6 +131,7 @@ export default function VehicleInformationScreen({ navigation }) {
         </SafeAreaView>
     )
 }
+
 
 
 const styles = StyleSheet.create({

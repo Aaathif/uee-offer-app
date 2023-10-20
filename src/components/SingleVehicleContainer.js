@@ -4,8 +4,11 @@ import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, Scro
 export default function SingleVehicleContainer({data, navigation}) {
     return (
         <View style={styles.fieldContainer}>
-            <TouchableOpacity style={styles.fieldBox} onPress={() => navigation.navigate('ViewVehicleDetails')}>
-                <Text style={styles.fieldBoxText}>{data.name}</Text>
+            <TouchableOpacity style={styles.fieldBox} onPress={() => navigation.navigate('ViewVehicleDetails', data)}>
+                <Text style={styles.fieldBoxText}>{data.vehicleModel}</Text>
+                <Text style={styles.fieldBoxSamllText}>{data.vehicleMake}</Text>
+                <Text style={styles.fieldBoxSamllText}>{data.vehicleRegistrationNumber}</Text>
+                <Text style={styles.fieldBoxSamllText}>{data.vehiclePlateNumber}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -39,4 +42,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
+    fieldBoxSamllText: {
+        fontSize: 15,
+        fontStyle: 'italic',
+        color: 'grey'
+    }
 });

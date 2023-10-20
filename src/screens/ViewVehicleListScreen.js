@@ -1,7 +1,8 @@
-import React from 'react'
-import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, ScrollView, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, ScrollView, FlatList, Alert } from 'react-native'
 import COLORS from '../consts/colors';
 import SingleVehicleContainer from '../components/SingleVehicleContainer';
+import axios from 'axios';
 
 const vehicledata = [
     {
@@ -25,6 +26,29 @@ const vehicledata = [
 ]
 
 export default function ViewVehicleListScreen({ navigation }) {
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, set] = useState(false);
+
+    const [fetchVehicle, setFetchVehicle] = useState([]);
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+
+    const getData = async () => {   
+        await axios.get("http://192.168.8.106:3000/vehicle")
+            .then((res) => {
+                setFetchVehicle(res.data);
+            })
+            .catch((err) => {
+                Alert.alert("Error occurred while retrieving data");
+                console.error("Error :", err);
+            })
+    };
+
+    
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent={false} />
@@ -33,15 +57,15 @@ export default function ViewVehicleListScreen({ navigation }) {
                     <Text style={styles.titleText}>Account Information</Text>
                     <Text style={styles.smallText}>For driver or vehicle Information</Text>
                 </View>
-                <FlatList 
-                    data={vehicledata}
+                <FlatList
+                    data={fetchVehicle}
                     keyExtractor={item => item.id}
-                    renderItem={({item}) => (
-                        <SingleVehicleContainer 
+                    renderItem={({ item }) => (
+                        <SingleVehicleContainer
                             data={item}
                             navigation={navigation}
                         />
-                    ) }
+                    )}
                 />
             </View>
         </SafeAreaView>
