@@ -45,7 +45,7 @@ export default function DriverProfileScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>View Map</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn} >
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('MapView')} >
             <Icon name="send"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>

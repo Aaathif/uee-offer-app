@@ -21,6 +21,7 @@ import ViewDriverDetailsScreen from './src/screens/ViewDriverDetailsScreen';
 import ViewVehicleListScreen from './src/screens/ViewVehicleListScreen';
 import ViewVehicleDetailsScreen from './src/screens/ViewVehicleDetailsScreen';
 import VehicleDetailsUpdateScreen from './src/screens/VehicleDetailsUpdateScreen';
+import MapScreen from './src/screens/MapScreen';
 
 
 const Stack = createStackNavigator();
@@ -52,6 +53,7 @@ export default function App() {
             <Stack.Screen name='ViewVehicleList' component={ViewVehicleListScreen} options={{title: 'Vehicle List'}}/>
             <Stack.Screen name='ViewVehicleDetails' component={ViewVehicleDetailsScreen} options={{title: 'Vehicle Details'}}/>
             <Stack.Screen name='VehicleDetailsUpdate' component={VehicleDetailsUpdateScreen} options={{title: 'Vehicle Details Update'}}/>
+            <Stack.Screen name='MapView' component={MapScreen} options={{title: 'Map View'}} />
         </Stack.Navigator>
     </NavigationContainer>
   );
