@@ -22,10 +22,9 @@ export default function DisplayInformation({navigation}) {
                     <TouchableOpacity style={styles.fieldBox} onPress={() => navigation.navigate('ViewVehicleList')}> 
                         <Text style={styles.fieldBoxText}>Vehicle List</Text>
                     </TouchableOpacity>
-           
                 </View>
-                <View style={styles.fieldContainer}>
-                    <TouchableOpacity style={styles.fieldBox}>
+                <View style={styles.fieldContainer}> 
+                    <TouchableOpacity style={styles.fieldBox} onPress={() => navigation.navigate('ViewImage')}>
                         <Text style={styles.fieldBoxText}>Vehicle Image Details</Text>
                     </TouchableOpacity>
              
