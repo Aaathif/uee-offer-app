@@ -53,7 +53,7 @@ export default function DriverProfileScreen({ navigation }) {
           <View style={styles.fieldBox}>
             <Text style={styles.fieldBoxText}>Setting</Text>
           </View>
-          <TouchableOpacity style={styles.fieldBtn} >
+          <TouchableOpacity style={styles.fieldBtn} onPress={() => navigation.navigate('UploadImage')} >
             <Icon name="send"  size={40} color={COLORS.primary} />
           </TouchableOpacity>
         </View>

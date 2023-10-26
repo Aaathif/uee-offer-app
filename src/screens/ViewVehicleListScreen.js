@@ -38,7 +38,7 @@ export default function ViewVehicleListScreen({ navigation }) {
 
 
     const getData = async () => {   
-        await axios.get("http://192.168.8.106:3000/vehicle")
+        await axios.get("http://192.168.43.190:3000/vehicle")
             .then((res) => {
                 setFetchVehicle(res.data);
             })

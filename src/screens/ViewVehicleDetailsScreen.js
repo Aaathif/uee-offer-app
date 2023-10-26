@@ -22,7 +22,7 @@ export default function ViewVehicleDetailsScreen({ navigation, route }) {
                 {
                     text: 'Delete',
                     onPress: async () => {
-                        await axios.delete(`http://192.168.8.106:3000/vehicle/${id}`)
+                        await axios.delete(`http://192.168.43.190:3000/vehicle/${id}`)
                             .then(() => {
                                 Alert.alert("Vehicle Details Deleted Successfully");
                                 // getData();

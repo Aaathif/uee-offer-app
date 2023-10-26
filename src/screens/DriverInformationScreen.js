@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { SafeAreaView, ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import COLORS from '../consts/colors'
+import axios from 'axios';
 
 export default function DriverInformationScreen({ navigation }) {
 
@@ -42,6 +43,42 @@ export default function DriverInformationScreen({ navigation }) {
     const handleGenderChange = (text) => {
         setGender(text);
     };
+
+    handleAddDriver = () => {
+        sendData();
+    }
+
+    const sendData = async () => {
+        const newDriver = {
+            driverName,
+            driverEmail,
+            driverFullName,
+            mobileNumber,
+            dateOfBirth,
+            nationalId,
+            address,
+            emergencyContact,
+            gender
+        }
+
+        await axios.post("http://192.168.8.106:3000/driver", newDriver)
+            .then((response) => {
+                console.log('Server Response Added Driver Successfully:', response.data);
+                alert("Driver added Successfully");
+                setDriverName('');
+                setDriverFullName('');
+                setMobileNumber('');
+                setDateOfBirth('');
+                setNationalId('');
+                setAddress('');
+                setEmergencyContact('');
+                setGender('');
+            })
+            .catch((error) => {
+                alert("Add driver error happened")
+                console.error('driver Error:', error);
+            });
+    }
 
 
     return (
@@ -133,7 +170,7 @@ export default function DriverInformationScreen({ navigation }) {
                     />
                 </View>
                 <View style={styles.fieldContainer}>
-                    <TouchableOpacity style={styles.submitBtn}>
+                    <TouchableOpacity style={styles.submitBtn} onPress={() => { handleAddDriver() }}>
                         <Text style={styles.submitText}>Submit</Text>
                     </TouchableOpacity>
                 </View>
