@@ -80,6 +80,7 @@ export default function VehicleDetailsUpdateScreen({ route }) {
                 <View style={styles.fieldContainer}>
                     <Text style={styles.inputLabel}>Vehicle Make</Text>
                     <TextInput
+                        keyboardType="numeric"
                         style={styles.inputBox}
                         placeholder="Enter Vehicle Make"
                         value={vehicleMake}
@@ -89,6 +90,7 @@ export default function VehicleDetailsUpdateScreen({ route }) {
                 <View style={styles.fieldContainer}>
                     <Text style={styles.inputLabel}>Vehicle Year</Text>
                     <TextInput
+                        keyboardType="numeric"
                         style={styles.inputBox}
                         placeholder="Enter Vehicle Year"
                         value={vehicleYear}
