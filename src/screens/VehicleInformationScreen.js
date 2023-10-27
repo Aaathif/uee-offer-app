@@ -45,7 +45,7 @@ export default function VehicleInformationScreen({ navigation }) {
             vehicleInsurance
         }
 
-        await axios.post("http://192.8.106.190:3000/vehicle", newVehicle)
+        await axios.post("http://192.168.8.106:3000/vehicle", newVehicle)
             .then((response) => {
                 console.log('Server Response Added Vehicles Successfully:', response.data);
                 alert("Vehicle added Successfully");
