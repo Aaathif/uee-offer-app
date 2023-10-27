@@ -48,7 +48,7 @@ export default function VehicleDetailsUpdateScreen({ route }) {
 
 
     const updateData = async (id) => {
-        await axios.put(`http://192.168.43.190:3000/vehicle/${key}`, updatedVehicle)
+        await axios.put(`http://192.168.8.106:3000/vehicle/${key}`, updatedVehicle)
             .then(() => {
                 Alert.alert("Vehicle Details Updated Successfully")
                 navigation.navigate('displayInformation')

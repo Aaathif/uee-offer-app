@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
-import { SafeAreaView, ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { SafeAreaView, ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native'
 import COLORS from '../consts/colors'
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
-export default function DriverInformationScreen({ navigation }) {
 
+export default function DriverDetailsUpdate({ route }) {
 
-    const [userName, setDriverName] = useState('');
-    const [userEmail, setDriverEmail] = useState('');
-    const [fullName, setDriverFullName] = useState('');
-    const [mobileNo, setMobileNumber] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [nicNo, setNationalId] = useState('');
-    const [address, setAddress] = useState('');
-    const [emergencyContact, setEmergencyContact] = useState('');
-    const [gender, setGender] = useState('');
+    const navigation = useNavigation();
+
+    const driver = route.params;
+    const key = driver._id;
+
+    const [userName, setDriverName] = useState(driver.userName);
+    const [userEmail, setDriverEmail] = useState(driver.userEmail);
+    const [fullName, setDriverFullName] = useState(driver.fullName);
+    const [mobileNo, setMobileNumber] = useState(driver.mobileNo);
+    const [dateOfBirth, setDateOfBirth] = useState(driver.dateOfBirth);
+    const [nicNo, setNationalId] = useState(driver.nicNo);
+    const [address, setAddress] = useState(driver.address);
+    const [emergencyContact, setEmergencyContact] = useState(driver.emergencyContact);
+    const [gender, setGender] = useState(driver.gender);
 
     const handleDriverNameChange = (text) => {
         setDriverName(text);
@@ -44,42 +50,31 @@ export default function DriverInformationScreen({ navigation }) {
         setGender(text);
     };
 
-    handleAddDriver = () => {
-        sendData();
+    const updatedDriver = {
+        userName,
+        userEmail,
+        fullName,
+        mobileNo,
+        dateOfBirth,
+        nicNo,
+        address,
+        emergencyContact,
+        gender
     }
 
-    const sendData = async () => {
-        const newDriver = {
-            userName,
-            userEmail,
-            fullName,
-            mobileNo,
-            dateOfBirth,
-            nicNo,
-            address,
-            emergencyContact,
-            gender
-        }
 
-        await axios.post("http://192.168.8.106:3000/driver", newDriver)
-            .then((response) => {
-                console.log('Server Response Added Driver Successfully:', response.data);
-                alert("Driver added Successfully");
-                setDriverName('');
-                setDriverFullName('');
-                setMobileNumber('');
-                setDateOfBirth('');
-                setNationalId('');
-                setAddress('');
-                setEmergencyContact('');
-                setGender('');
+    const updateData = async (id) => {
+        await axios.put(`http://192.168.8.106:3000/driver/${key}`, updatedDriver)
+            .then(() => {
+                Alert.alert("Driver Details Updated Successfully")
+                navigation.navigate('displayInformation')
+                console.log("Driver Details Updated")
             })
-            .catch((error) => {
-                alert("Add driver error happened")
-                console.error('driver Error:', error);
-            });
+            .catch((err) => {
+                Alert.alert("Error occurred while updating the details")
+                console.error('Error: rrror occurred while updating the details', err);
+            })
     }
-
 
     return (
         <SafeAreaView style={styles.container}>
@@ -170,7 +165,7 @@ export default function DriverInformationScreen({ navigation }) {
                     />
                 </View>
                 <View style={styles.fieldContainer}>
-                    <TouchableOpacity style={styles.submitBtn} onPress={() => { handleAddDriver() }}>
+                    <TouchableOpacity style={styles.submitBtn} onPress={updateData}>
                         <Text style={styles.submitText}>Submit</Text>
                     </TouchableOpacity>
                 </View>

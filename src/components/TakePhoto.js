@@ -25,12 +25,12 @@ export default function TakePhoto({title, text, image}) {
         const formData = new FormData();
         formData.append('image', {
           uri,
-          type: 'image/jpeg', // Adjust the content type based on your needs
+          type: 'image/jpg', // Adjust the content type based on your needs
           name: 'image.jpg',
         });
       
         try {
-          const response = await fetch('http://192.168.43.190:3000/upload', {  
+          const response = await fetch('http://192.168.8.106:3000/upload', {  
             method: 'POST',
             body: formData,
             headers: {

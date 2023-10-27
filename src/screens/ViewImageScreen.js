@@ -7,7 +7,7 @@ export default function ViewImageScreen() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.43.190:3000/images') // Replace with your server URL
+    fetch('http://192.168.8.106:3000/images') // Replace with your server URL
       .then(response => response.json())
       .then(data => setImages(data))
       .catch(error => console.error('Error fetching images:', error));
@@ -20,7 +20,7 @@ export default function ViewImageScreen() {
       keyExtractor={(item, index) => index.toString()}
       renderItem={({ item }) => (
         <View style={styles.innercontainer}>
-          <Image source={{ uri: item.path }} style={{ width: 200, height: 200 }} />
+          <Image source={{ uri: item.path }} style={{ width: 200, height: 200, borderColor: 'red', borderWidth: 3 }} />
           <Image source={{ uri: 'https://img.freepik.com/premium-vector/documents-folder-with-stamp-text-contract-with-approval-stamp_349999-535.jpg?w=2000' }} style={{ width: 200, height: 200 }} />
           <Text>{item.path}</Text>
         </View>

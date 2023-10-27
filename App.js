@@ -24,6 +24,7 @@ import VehicleDetailsUpdateScreen from './src/screens/VehicleDetailsUpdateScreen
 import MapScreen from './src/screens/MapScreen';
 import UploadImage from './src/components/UploadImage';
 import ViewImageScreen from './src/screens/ViewImageScreen';
+import DriverDetailsUpdate from './src/screens/DriverDetailsUpdate';
 
 
 const Stack = createStackNavigator();
@@ -58,6 +59,7 @@ export default function App() {
             <Stack.Screen name='MapView' component={MapScreen} options={{title: 'Map View'}} />
             <Stack.Screen name='UploadImage' component={UploadImage} options={{title: 'Upload Image'}} />
             <Stack.Screen name='ViewImage' component={ViewImageScreen} options={{title: 'Document Images'}} />
+            <Stack.Screen name='DriverDetailsUpdate' component={DriverDetailsUpdate} options={{title: 'Update Driver'}} />
         </Stack.Navigator>
     </NavigationContainer>
   );

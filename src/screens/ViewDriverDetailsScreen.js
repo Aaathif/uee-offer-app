@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView, StatusBar, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import COLORS from '../consts/colors';
+import axios from 'axios';
 
 
 export default function ViewDriverDetailsScreen({ navigation }) {
+
+    const [fetchDriver, setFetchDriver] = useState([]);
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+
+    const getData = async () => {   
+        await axios.get("http://192.168.8.106:3000/driver")
+            .then((res) => {
+                setFetchDriver(res.data[0]);
+                console.log(res.data[0]);
+            })
+            .catch((err) => {
+                Alert.alert("Error occurred while retrieving data");
+                console.error("Error :", err);
+            })
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent={false} />
@@ -17,7 +38,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>User Name</Text>
                     </View>
                     <View style={styles.fieldBtn}>
-                        <Text style={styles.fieldBtnText}>Hazil Thahir</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.userName}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -25,7 +46,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>User Email</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>hazil@gmail.com</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.userEmail}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -33,7 +54,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Full Name</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>Mohamed Hazil Mohamed Thahir</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.fullName}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -41,7 +62,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Mobile Number</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>077-128-1289</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.mobileNo}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -49,7 +70,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Date of birth</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>1995.01.21</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.dateOfBirth}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -57,7 +78,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>NIC Number</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>952851672V</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.nicNo}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -65,7 +86,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Address</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>1A Centre Road, Colombo 00200</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.address}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -73,7 +94,7 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Emergency Contact</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>077-128-8769</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.emergencyContact}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldContainer}>
@@ -81,11 +102,11 @@ export default function ViewDriverDetailsScreen({ navigation }) {
                         <Text style={styles.fieldBoxText}>Gender</Text>
                     </View>
                     <View style={styles.fieldBtn} >
-                        <Text style={styles.fieldBtnText}>Male</Text>
+                        <Text style={styles.fieldBtnText}>{fetchDriver.gender}</Text>
                     </View>
                 </View>
                 <View style={styles.fieldBtnContainer}>
-                    <TouchableOpacity style={styles.submitBtn}>
+                    <TouchableOpacity style={styles.submitBtn} onPress={() => navigation.navigate('DriverDetailsUpdate', fetchDriver)}>
                         <Text style={styles.submitText}>Update</Text>
                     </TouchableOpacity>
                 </View>
