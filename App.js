@@ -23,14 +23,34 @@ import ViewVehicleDetailsScreen from './src/screens/ViewVehicleDetailsScreen';
 import VehicleDetailsUpdateScreen from './src/screens/VehicleDetailsUpdateScreen';
 
 
-const Stack = createStackNavigator();
+import * as React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import orderReducer from './src/features/order';
+
+import WelcomeScreen from './src/screens/WelcomeScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import ProductScreen from './src/screens/ProductScreen';
+import Cart from './src/screens/Cart';
+import Checkout from './src/screens/Checkout';
+
+const store = configureStore({
+  reducer: {
+    order: orderReducer,
+  },
+});
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
-        <Stack.Navigator screenOptions={{ headerShown: true }} initialRouteName='DriverProfile'>
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
             <Stack.Screen name='DriverAccount' component={DriverAccountScreen} options={{title: 'Driver Account'}}/>
             <Stack.Screen name='DriverProfile' component={DriverProfileScreen} options={{title: 'Driver Profile'}}/>
             
@@ -52,8 +72,16 @@ export default function App() {
             <Stack.Screen name='ViewVehicleList' component={ViewVehicleListScreen} options={{title: 'Vehicle List'}}/>
             <Stack.Screen name='ViewVehicleDetails' component={ViewVehicleDetailsScreen} options={{title: 'Vehicle Details'}}/>
             <Stack.Screen name='VehicleDetailsUpdate' component={VehicleDetailsUpdateScreen} options={{title: 'Vehicle Details Update'}}/>
+
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="ProductScreen" component={ProductScreen} />
+            <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Checkout" component={Checkout} />
         </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
+
   );
 }
 
