@@ -29,8 +29,7 @@ const SellerScreen = ({ navigation }) => {
                             style.btn,
                         ]}onPressOut={() => navigation.navigate('LoginPage')}>
                             <Text style={style.textStyle}>Super Market</Text>
-                        </Pressable>
-                       
+                        </Pressable>                      
                     </View>
                 </View>
             </ScrollView>

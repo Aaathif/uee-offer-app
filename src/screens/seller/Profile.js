@@ -7,16 +7,13 @@ import COLORS from '../../consts/colors';
 
 const Profile = ({ navigation }) => {
 
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
       <ScrollView>
         <View style={{ marginTop: 2,  }}>
           <View >
             <ImageBackground source={require('../../../assets/profile.png')} style={[style.img, { flexDirection: 'row-reverse', }]} resizeMode='contain' >
-
               <FontAwesome5 name="user-edit" size={25} color={COLORS.primary} style={{ marginRight: 10 }} onPress={()=>navigation.navigate('EditProfilePage')} />
-
             </ImageBackground>
             <Text style={{alignSelf:'center', fontSize:25, fontWeight:'bold'}}> Green Farm Super market</Text>
           </View>
