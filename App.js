@@ -36,6 +36,8 @@ import ProductScreen from './src/screens/ProductScreen';
 import Cart from './src/screens/Cart';
 import Checkout from './src/screens/Checkout';
 
+{/* Asiff */}
+
 const store = configureStore({
   reducer: {
     order: orderReducer,
@@ -78,6 +80,9 @@ export default function App() {
             <Stack.Screen name="ProductScreen" component={ProductScreen} />
             <Stack.Screen name="Cart" component={Cart} />
             <Stack.Screen name="Checkout" component={Checkout} />
+
+            {/* Asiff */}
+
         </Stack.Navigator>
     </NavigationContainer>
     </Provider>
