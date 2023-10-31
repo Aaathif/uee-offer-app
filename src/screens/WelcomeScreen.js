@@ -39,9 +39,9 @@ export default function WelcomeScreen() {
                     </TouchableOpacity>
                     <TouchableOpacity
                         className='bg-white py-2 rounded-xl items-center shadow-md' style={{width:wp(60)}}
-                        
+                        // onPress={()=> navigation.navigate('SellerScreen')}
                     >
-                        <Text style={{letterSpacing: 4}} className='text-base font-medium text-primary'>SUPER MARKET</Text>
+                        <Text style={{letterSpacing: 4}} className='text-base font-medium text-primary'>SELLER</Text>
                     </TouchableOpacity>
                 </View>
             </View>

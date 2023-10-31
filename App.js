@@ -22,6 +22,18 @@ import ViewVehicleListScreen from './src/screens/ViewVehicleListScreen';
 import ViewVehicleDetailsScreen from './src/screens/ViewVehicleDetailsScreen';
 import VehicleDetailsUpdateScreen from './src/screens/VehicleDetailsUpdateScreen';
 
+{/* Asiff */}
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import StartupRegistrationPage1 from './src/screens/StartupRegistrationPage1';
+import StartupRegistrationPage2 from './src/screens/StartupRegistrationPage2';
+import AddOfferScreen1 from './src/screens/AddOfffersScreen1';
+import OffersHome from './src/screens/OffersHome';
+import OfferDetails from './src/screens/OfferDetails';
+import StartupInitialPage from './src/screens/StartupInitialPage';
+import StartupProfile from './src/screens/StartupProfile';
+import UpdateOffersScreen from './src/screens/UpdateOffersScreen';
+import SellerScreen from './src/screens/SellerScreen';
 
 import * as React from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
@@ -43,6 +55,58 @@ const store = configureStore({
 });
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator()
+
+function StartUpDashboard() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'OffersHome') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'StartupProfile') {
+            iconName = focused ? 'person' : 'person-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarStyle: [
+          {
+            
+            display: 'flex',
+         
+            paddingTop:10
+          },
+          null
+        ],
+        tabBarActiveTintColor: COLORS.blue, // active icon color
+        tabBarInactiveTintColor: 'gray', // inactive icon color
+      })}>
+      <Tab.Screen name="OffersHome" component={OffersHome}
+       options={{
+        headerShown: true,
+        title: 'Offer Home',
+        headerTitleAlign: 'center',
+        headerPressColor: '#3A95C2',
+        headerTitleStyle: {fontSize: 20,color:COLORS.blue},
+        headerStyle:{borderBottomColor:COLORS.blue, borderBottomWidth:1},
+      }} />
+      
+      <Tab.Screen name='StartupProfile' component={StartupProfile}
+       options={{
+        headerShown: true,
+        title: 'Profile',
+        headerTitleAlign: 'center',
+        headerPressColor: '#3A95C2',
+        headerTitleStyle: {fontSize: 20,color:COLORS.blue},
+        headerStyle:{borderBottomColor:COLORS.blue, borderBottomWidth:1},
+      }} />
+    </Tab.Navigator>
+  );
+
+};
 
 export default function App() {
 
@@ -78,6 +142,16 @@ export default function App() {
             <Stack.Screen name="ProductScreen" component={ProductScreen} />
             <Stack.Screen name="Cart" component={Cart} />
             <Stack.Screen name="Checkout" component={Checkout} />
+
+            {/* Asiff */}
+            <Stack.Screen name='StartupRegistrationPage1' component={StartupRegistrationPage1} options={{title: 'Start up Registration', headerTitleAlign: 'center',}} />
+            <Stack.Screen name='StartupRegistrationPage2' component={StartupRegistrationPage2} options={{title: 'Start up Registration', headerTitleAlign: 'center',}}/>
+            <Stack.Screen name='AddOffersScreen1' component={AddOfferScreen1} options={{title: 'Add Deals', headerTitleAlign: 'center',}}/>
+            <Stack.Screen name='OfferDetails' component={OfferDetails} options={{ headerShown: false }}/>
+            <Stack.Screen name='StartupInitialPage' component={StartupInitialPage} options={{ headerShown: false }}/>
+            <Stack.Screen name='SellerScreen' component={SellerScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name='StartUpDashboard' component={StartUpDashboard} options={{ headerShown: false }}/>        
+            <Stack.Screen name='UpdateOffersScreen' component={UpdateOffersScreen} options={{title: 'Update Offer', headerTitleAlign: 'center',}}/>
         </Stack.Navigator>
     </NavigationContainer>
     </Provider>
